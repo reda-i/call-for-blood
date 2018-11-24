@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: "{{ .Chart.Name }}-configmap"
+  labels:
+    app.kubernetes.io/name: {{ include "call-for-blood.name" . }}
+data:
+  mongoUrl: "{{ .Values.config.mongoUrl }}"
+  sessionSecret: "{{ .Values.config.sessionSecret }}"
+  nodeEnv: "{{ .Values.config.nodeEnv}}"
+  baseURL: "{{ .Values.config.baseURL}}"
+  signupEndpoint: "/api/user/create"
+  loginEndpoint: "/api/user/authenticate"

@@ -1,6 +1,8 @@
 apiVersion: v1
 kind: Service
 metadata:
+  annotations:
+    prometheus.io/scrape: 'true'
   name: {{ include "call-for-blood.fullname" . }}
   labels:
     app.kubernetes.io/name: {{ include "call-for-blood.name" . }}
@@ -10,10 +12,12 @@ metadata:
 spec:
   type: {{ .Values.service.type }}
   ports:
-    - port: {{ .Values.service.port }}
-      targetPort: http
-      protocol: TCP
-      name: http
+    - name: frontend
+      port: {{ .Values.service.servicePort}}
+      nodePort: {{ .Values.service.serviceNodePort }}
+    - name: auth
+      port: {{ .Values.auth.servicePort }}
+      nodePort: {{ .Values.auth.serviceNodePort }}
   selector:
     app.kubernetes.io/name: {{ include "call-for-blood.name" . }}
     app.kubernetes.io/instance: {{ .Release.Name }}
