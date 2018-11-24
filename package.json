@@ -2,9 +2,10 @@
   "name": "call-for-blood",
   "version": "1.0.0",
   "description": "A place where blood donors can painlessly help the close hospitals to them in need for blood donations.",
-  "main": "server/server.js",
+  "main": "index.js",
   "scripts": {
-    "start": "node server/server.js"
+    "start": "node frontend/server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
@@ -14,8 +15,9 @@
     "donations",
     "NGO",
     "blood",
-    "express",
-    "micro-services"
+    "micro-services",
+    "docker",
+    "kubernetes"
   ],
   "author": "Logician724",
   "license": "MIT",
@@ -24,10 +26,6 @@
   },
   "homepage": "https://gitlab.com/Logician724/call-for-blood#readme",
   "dependencies": {
-    "appmetrics-dash": "^4.0.0",
-    "appmetrics-prometheus": "^2.0.0",
-    "appmetrics-zipkin": "^1.1.1",
-    "express": "^4.16.4",
-    "log4js": "^3.0.6"
+    "dotenv": "^6.1.0"
   }
 }
