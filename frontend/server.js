@@ -1,3 +1,7 @@
+require('dotenv').config({
+    silent: true,
+    path: `${__dirname}/.env`
+});
 const zipkin = require('appmetrics-zipkin');
 const prometheus = require('appmetrics-prometheus');
 const appName = require('./package').name;
@@ -14,11 +18,17 @@ const app = express();
 app.use(express.static(`${__dirname}/public`));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
-
+app.get('/test', (req, res) => {
+    res.send('welcome to frontend router');
+});
 require('./routes/auth')(app);
 
-const port = process.env.PORT || 3100;
+const port = process.env.NODE_ENV === 'production'
+    ? process.env.PORT
+    : process.env.SERVER_PORT;
 
 app.listen(port, () => {
-    logger.info(`Call For Blood running on port: ${port}`);
+    logger.debug(`Call For Blood running on port: ${port}`);
 });
+
+process.on('SIGINT', ()=> process.exit(0));

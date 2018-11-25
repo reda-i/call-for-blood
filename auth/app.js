@@ -13,12 +13,15 @@ app.all('/', (req, res, next) => {
     next();
 });
 
+app.get('/api/auth', (req, res) => {
+    res.send('welcome to auth api');
+});
 
-app.post('/api/user/create', (req,res) => {
+app.post('/api/auth/create', (req, res) => {
 
 });
 
-app.post('/api/user/authenticate', (req,res) => {
+app.post('/api/auth/authenticate', (req, res) => {
 
 });
 

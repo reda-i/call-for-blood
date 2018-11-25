@@ -7,7 +7,8 @@
     "extends": "eslint:recommended",
     "parserOptions": {
         "ecmaFeatures": {
-            "jsx": true
+            "jsx": true,
+            "modules": true
         },
         "ecmaVersion": 2018,
         "sourceType": "module"
@@ -129,6 +130,7 @@
         "no-catch-shadow": "error",
         "no-confusing-arrow": "error",
         "no-continue": "error",
+        "no-console": "off",
         "no-div-regex": "error",
         "no-duplicate-imports": "error",
         "no-else-return": "error",
@@ -173,7 +175,7 @@
         "no-path-concat": "error",
         "no-plusplus": "error",
         "no-process-env": "off",
-        "no-process-exit": "error",
+        "no-process-exit": "off",
         "no-proto": "error",
         "no-prototype-builtins": "error",
         "no-restricted-globals": "error",
@@ -240,6 +242,9 @@
             "single"
         ],
         "radix": "error",
+        "react/jsx-uses-react": 2,
+        "react/jsx-uses-vars": 2,
+        "react/react-in-jsx-scope": 2,
         "require-atomic-updates": "error",
         "require-await": "error",
         "require-jsdoc": "off",
