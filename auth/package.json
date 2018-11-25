@@ -1,10 +1,9 @@
 {
-  "name": "call-for-blood",
+  "name": "cfb-auth",
   "version": "1.0.0",
-  "description": "A place where blood donors can painlessly help the close hospitals to them in need for blood donations.",
+  "description": "Authentication microservice for the call-for-blood app",
   "main": "index.js",
   "scripts": {
-    "start": "cd ./frontend; react-scripts start",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -12,12 +11,9 @@
     "url": "git+https://gitlab.com/Logician724/call-for-blood.git"
   },
   "keywords": [
-    "donations",
-    "NGO",
-    "blood",
-    "micro-services",
-    "docker",
-    "kubernetes"
+    "auth",
+    "call-for-blood",
+    "microservice"
   ],
   "author": "Logician724",
   "license": "MIT",
@@ -26,6 +22,13 @@
   },
   "homepage": "https://gitlab.com/Logician724/call-for-blood#readme",
   "dependencies": {
-    "dotenv": "^6.1.0"
+    "dotenv": "^6.1.0",
+    "express": "^4.16.4",
+    "express-validator": "^5.3.0",
+    "log4js": "^3.0.6",
+    "mongoose": "^5.3.13"
+  },
+  "devDependencies": {
+    "eslint": "^5.9.0"
   }
 }

@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "appmetrics-prometheus": "^2.0.0",
     "appmetrics-zipkin": "^1.1.1",
     "express": "^4.16.4",
     "log4js": "^3.0.6",
@@ -12,7 +13,7 @@
     "request": "^2.88.0"
   },
   "scripts": {
-    "start": "node server.js",
+    "start": "react-scripts start",
     "react:start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
@@ -29,7 +30,6 @@
     "not op_mini all"
   ],
   "devDependencies": {
-    "eslint": "^5.9.0",
     "eslint-plugin-react": "^7.11.1"
   }
 }
