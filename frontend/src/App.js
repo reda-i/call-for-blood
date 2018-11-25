@@ -1,26 +1,24 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
+import FirstPage from './components/firstpage';
+import SignUp from './components/signup/signup';
+import SecondPage from './components/secondpage';
+import ThirdPage from './components/thirdpage';
 
 class App extends Component {
+  state = {};
+
+  // the other pages are to be added later
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
+      <Router>
+        <div>
+          <Route exact path='/' component={FirstPage} />
+          <Route path='/join' component={SignUp} />
+          <Route path='/products' component={ThirdPage} />
+          <Route path='/about' component={SecondPage} />
+        </div>
+      </Router>
     );
   }
 }

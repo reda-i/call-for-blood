@@ -4,7 +4,11 @@
         "es6": true,
         "node": true
     },
-    "extends": "eslint:recommended",
+    "extends": [
+        "eslint:recommended",
+        "plugin:react/recommended"
+    ],
+    "parser": "babel-eslint",
     "parserOptions": {
         "ecmaFeatures": {
             "jsx": true,
@@ -83,7 +87,7 @@
         "init-declarations": "error",
         "jsx-quotes": [
             "error",
-            "prefer-double"
+            "prefer-single"
         ],
         "key-spacing": "error",
         "keyword-spacing": [
@@ -239,7 +243,8 @@
         "quote-props": "off",
         "quotes": [
             "error",
-            "single"
+            "single",
+            {"allowTemplateLiterals": true}
         ],
         "radix": "error",
         "react/jsx-uses-react": 2,
