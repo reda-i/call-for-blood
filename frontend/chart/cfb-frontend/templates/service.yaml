@@ -1,0 +1,18 @@
+apiVersion: v1
+kind: Service
+metadata:
+  prometheus.io/scrape: 'true'
+  name: {{ include "cfb-frontend.fullname" . }}
+  labels:
+    app.kubernetes.io/name: {{ include "cfb-frontend.name" . }}
+    helm.sh/chart: {{ include "cfb-frontend.chart" . }}
+    app.kubernetes.io/instance: {{ .Release.Name }}
+    app.kubernetes.io/managed-by: {{ .Release.Service }}
+spec:
+  type: {{ .Values.service.type }}
+    ports:
+    - port: {{ .Values.service.servicePort }}
+      nodePort: {{ .Values.service.serviceNodePort }}
+  selector:
+    app.kubernetes.io/name: {{ include "cfb-frontend.name" . }}
+    app.kubernetes.io/instance: {{ .Release.Name }}
