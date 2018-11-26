@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
-import './signup.css';
+import styles from './signup.module.css';
 class SignUp extends Component {
 
   render() {
     return (
       <div>
-          <div id='wrapper' className='normal'>
+          <div id='wrapper' className={styles.normal}>
           <div className='login front'>
               <h1>Welcome</h1>
-              <div className='input-wrapper'>
+              <div className={styles['input-wrapper']}>
                   <i className='fa fa-envelope' aria-hidden='true'></i>
                   <input type='email' placeholder='Email'></input>
               </div>

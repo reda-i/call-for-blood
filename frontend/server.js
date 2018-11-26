@@ -15,7 +15,7 @@ logger.level = process.env.NODE_ENV === 'production'
     : 'debug';
 const app = express();
 
-app.use(express.static(`${__dirname}/public`));
+app.use(express.static(`${__dirname}/build`));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.get('/test', (req, res) => {
