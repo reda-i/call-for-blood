@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import SignUp from './modules/auth/signup/signup';
 import Landing from './modules/landing/landing';
-import Aux from './modules/shared/Aux';
+import Aux from './modules/shared/auxiliary';
 class App extends Component {
   state = {};
 
