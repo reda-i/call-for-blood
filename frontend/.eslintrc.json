@@ -20,6 +20,12 @@
     "plugins": [
         "react"
     ],
+    "settings": {
+        "react": {
+            "pragma": "React",
+            "version": "16.6.3"
+        }
+    },
     "rules": {
         "accessor-pairs": "error",
         "array-bracket-newline": "error",
@@ -112,7 +118,7 @@
         "max-depth": "error",
         "max-len": "off",
         "max-lines": "error",
-        "max-lines-per-function": "error",
+        "max-lines-per-function": "off",
         "max-nested-callbacks": "error",
         "max-params": "error",
         "max-statements": "error",
@@ -121,7 +127,7 @@
             "error",
             "separate-lines"
         ],
-        "multiline-ternary": "error",
+        "multiline-ternary": "off",
         "new-cap": "error",
         "new-parens": "error",
         "newline-after-var": "off",
@@ -153,7 +159,7 @@
         "no-implicit-globals": "error",
         "no-implied-eval": "error",
         "no-inline-comments": "error",
-        "no-invalid-this": "error",
+        "no-invalid-this": "off",
         "no-iterator": "error",
         "no-label-var": "error",
         "no-labels": "error",
@@ -169,9 +175,9 @@
         "no-multi-str": "error",
         "no-multiple-empty-lines": "error",
         "no-native-reassign": "error",
-        "no-negated-condition": "error",
+        "no-negated-condition": "off",
         "no-negated-in-lhs": "error",
-        "no-nested-ternary": "error",
+        "no-nested-ternary": "off",
         "no-new": "error",
         "no-new-func": "error",
         "no-new-object": "error",

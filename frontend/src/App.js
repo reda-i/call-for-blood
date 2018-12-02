@@ -1,43 +1,68 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { Route, Switch, Link, withRouter } from 'react-router-dom';
+import { NotificationContainer } from 'react-notifications';
+import SignIn from './modules/auth/signin/signin';
 import SignUp from './modules/auth/signup/signup';
 import Landing from './modules/landing/landing';
 import Aux from './modules/shared/auxiliary';
+import request from './modules/shared/request';
+import 'react-notifications/lib/notifications.css';
+
 class App extends Component {
-  state = {};
+  state = {
+    isLoggedIn: false
+  };
+
+  componentDidUpdate(prevProps) {
+    if (this.props.location !== prevProps.location) {
+      const token = localStorage.getItem('cfb_token');
+      if (token) {
+        // eslint-disable-next-line dot-notation
+        request.defaults.headers.common['authorization'] = token;
+        this.setState({ isLoggedIn: true });
+      }
+      console.log(this.state.isLoggedIn);
+    }
+  }
 
   // the other pages are to be added later
   render() {
     return (
       <Aux>
-        <header className='cfb-color-primary cfb-color-background container-fluid pb-5'>
+        <header className='cfb-color-primary cfb-color-background container-fluid'>
           <div className='row justify-content-between'>
             <div className='pl-3'>
               <h3>CFB | Call For Blood</h3>
             </div>
             <div className='col-xs-2 pr-3'>
               <nav className='nav ml-auto'>
-                <a className='nav-link'>Login</a>
+                {this.state.isLoggedIn
+                  ? <Aux>
+                    <Link to='/signin' className='nav-link'>SignIn</Link>
+                    <Link to='/signup' className='nav-link'>SignUp</Link>
+                  </Aux>
+                  : <Link to='/calls' className='nav-link'>My Calls</Link>
+                }
+
               </nav>
             </div>
           </div>
         </header>
         <div className='fill-page pad-header'>
-          <Router>
-            <Switch>
-              <Route path='/' exact component={Landing} />
-              <Route path='/signup' component={SignUp} />
-            </Switch>
-          </Router>
+          <Switch>
+            <Route path='/' exact component={Landing} />
+            <Route path='/signup' component={SignUp} />
+            <Route path='/signin' component={SignIn} />
+          </Switch>
         </div>
         <footer className='mastfoot mt-auto'>
-          <div className='inner'>
-            <p>Cover template for <a href='https://getbootstrap.com/'>Bootstrap</a>, by <a href='https://twitter.com/mdo'>@mdo</a>.</p>
-          </div>
+          <div className='inner'></div>
         </footer>
+        <NotificationContainer />
       </Aux>
+
     );
   }
 }
 
-export default App;
+export default withRouter(App);

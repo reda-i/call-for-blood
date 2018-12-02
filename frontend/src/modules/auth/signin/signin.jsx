@@ -3,28 +3,16 @@ import { geolocated } from 'react-geolocated';
 import request from '../../shared/request';
 import { NotificationManager } from 'react-notifications';
 
-import './signup.css';
-class SignUp extends Component {
+import './signin.css';
+class SignIn extends Component {
     state = {
         username: '',
-        password: '',
-        email: '',
-        isHospital: false,
-        phoneNumber: '',
-        location: {
-            type: 'Point',
-            coordinates: []
-        }
+        password: ''
     }
 
-    signUpUser = () => {
+    signInUser = () => {
         const currentState = this.state;
-        currentState.location.coordinates =
-            [
-                this.props.coords.latitude,
-                this.props.coords.longitude
-            ]
-        request.post('/endpoints/signup', currentState)
+        request.post('/endpoints/login', currentState)
             .then((res) => {
                 if (!res || !res.data) {
                     return NotificationManager.error('An unknown error occurred, please try again later.');
@@ -60,13 +48,13 @@ class SignUp extends Component {
 
     render() {
         return (
-            <div className='fill-page signup-back d-flex'>
+            <div className='fill-page signin-back d-flex'>
                 <div className='container mt-auto mb-auto'>
                     <div className='row'>
                         <div className='col-sm-9 col-md-7 col-lg-5 mx-auto'>
-                            <div className='card card-signup my-5'>
+                            <div className='card card-signin my-5'>
                                 <div className='card-body'>
-                                    <h5 className='card-title text-center'>Sign Up</h5>
+                                    <h5 className='card-title text-center'>Sign In</h5>
                                     {!this.props.isGeolocationAvailable
                                         ? <div>
                                             Your browser does not support geolocation, you need to upgrade or change your browser
@@ -75,7 +63,7 @@ class SignUp extends Component {
                                                 You need to enable geolocation to use CFB app services
                                             </div>
                                             : <form
-                                                className='form-signup'
+                                                className='form-signin'
                                                 onSubmit={(event) => event.preventDefault()}>
                                                 <div className='form-label-group'>
                                                     <input
@@ -91,18 +79,6 @@ class SignUp extends Component {
                                                 </div>
                                                 <div className='form-label-group'>
                                                     <input
-                                                        type='email'
-                                                        className='form-control'
-                                                        name='email'
-                                                        id='email'
-                                                        placeholder='Email Address'
-                                                        value={this.state.email}
-                                                        onChange={this.handleInputChange}
-                                                        required />
-                                                    <label htmlFor='email'>Email Address</label>
-                                                </div>
-                                                <div className='form-label-group'>
-                                                    <input
                                                         type='password'
                                                         className='form-control'
                                                         name='password'
@@ -113,29 +89,7 @@ class SignUp extends Component {
                                                         required />
                                                     <label htmlFor='password'>Password</label>
                                                 </div>
-                                                <div className='form-label-group'>
-                                                    <input
-                                                        type='tel'
-                                                        className='form-control'
-                                                        name='phoneNumber'
-                                                        id='phoneNumber'
-                                                        value={this.state.phoneNumber}
-                                                        onChange={this.handleInputChange}
-                                                        placeholder='Phone Number' />
-                                                    <label htmlFor='phoneNumber'>Phone Number</label>
-                                                </div>
-                                                <div className='custom-control custom-checkbox mb-3'>
-                                                    <input
-                                                        type='checkbox'
-                                                        className='custom-control-input'
-                                                        name='isHospital'
-                                                        id='isHospital'
-                                                        checked={this.state.isHospital}
-                                                        onChange={this.handleInputChange}
-                                                    />
-                                                    <label className='custom-control-label' htmlFor='isHospital'>I am a hospital administrator</label>
-                                                </div>
-                                                <button type='button' className='btn btn-lg btn-danger btn-block text-uppercase' onClick={this.signUpUser}>Sign Up</button>
+                                                <button type='button' className='btn btn-lg btn-danger btn-block text-uppercase' onClick={this.signInUser}>Sign IN</button>
                                             </form>
                                     }
                                 </div>
@@ -153,4 +107,4 @@ export default geolocated({
         enableHighAccuracy: true
     },
     userDecisionTimeout: 10000
-})(SignUp);
+})(SignIn);
