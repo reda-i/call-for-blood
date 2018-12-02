@@ -30,6 +30,8 @@
   },
   "homepage": "https://gitlab.com/Logician724/call-for-blood#readme",
   "dependencies": {
-    "dotenv": "^6.1.0"
+    "bcryptjs": "^2.4.3",
+    "dotenv": "^6.1.0",
+    "jsonwebtoken": "^8.4.0"
   }
 }

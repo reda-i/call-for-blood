@@ -56,7 +56,7 @@
         "id-match": "error",
         "implicit-arrow-linebreak": "error",
         "indent": "error",
-        "indent-legacy": "error",
+        "indent-legacy": "off",
         "init-declarations": "error",
         "jsx-quotes": "error",
         "key-spacing": "error",
@@ -73,7 +73,12 @@
         "max-depth": "error",
         "max-len": "error",
         "max-lines": "error",
-        "max-lines-per-function": "error",
+        "max-lines-per-function": [
+            "error",
+            {
+                "max": 80
+            }
+        ],
         "max-nested-callbacks": "error",
         "max-params": "error",
         "max-statements": "error",
@@ -158,7 +163,7 @@
         "no-sync": "error",
         "no-tabs": "error",
         "no-template-curly-in-string": "error",
-        "no-ternary": "error",
+        "no-ternary": "off",
         "no-throw-literal": "error",
         "no-trailing-spaces": "error",
         "no-undef-init": "error",
@@ -183,7 +188,7 @@
         "object-curly-newline": "error",
         "object-curly-spacing": [
             "error",
-            "never"
+            "always"
         ],
         "object-shorthand": "error",
         "one-var": "off",
@@ -198,14 +203,17 @@
         "prefer-numeric-literals": "error",
         "prefer-object-spread": "error",
         "prefer-promise-reject-errors": "error",
-        "prefer-reflect": "error",
+        "prefer-reflect": "off",
         "prefer-rest-params": "error",
         "prefer-spread": "error",
         "prefer-template": "error",
         "quote-props": "off",
         "quotes": [
             "error",
-            "single"
+            "single",
+            {
+                "allowTemplateLiterals": true
+            }
         ],
         "radix": "error",
         "require-atomic-updates": "error",
@@ -222,7 +230,7 @@
         "sort-imports": "error",
         "sort-keys": [
             "error",
-            "desc"
+            "asc"
         ],
         "sort-vars": "error",
         "space-before-blocks": "error",
