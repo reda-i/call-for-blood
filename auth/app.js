@@ -76,7 +76,7 @@ app.post(
                 return sendUnknownErrorMsg(err, res);
             }
             if (existingUser) {
-                return res.status(402).send({
+                return res.status(422).send({
                     err: null,
                     msg: `This username or email have already been registered`,
                     obj: null
@@ -169,7 +169,7 @@ app.post(
 
                 }
             );
-        })
+        });
     }
 );
 module.exports = app;
