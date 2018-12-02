@@ -29,9 +29,5 @@
     "url": "https://gitlab.com/Logician724/call-for-blood/issues"
   },
   "homepage": "https://gitlab.com/Logician724/call-for-blood#readme",
-  "dependencies": {
-    "bcryptjs": "^2.4.3",
-    "dotenv": "^6.1.0",
-    "jsonwebtoken": "^8.4.0"
-  }
+  "dependencies": {}
 }
