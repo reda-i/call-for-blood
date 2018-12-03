@@ -1,7 +1,7 @@
 FROM node:10
 
 ENV NODE_ENV production
-ENV PORT 3000
+ENV PORT 3100
 
 WORKDIR /usr/src/app
 

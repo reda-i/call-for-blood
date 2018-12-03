@@ -3,8 +3,6 @@ require('dotenv').config({
     silent: true,
     path: `${__dirname}/.env`
 });
-const zipkin = require('appmetrics-zipkin');
-const prometheus = require('appmetrics-prometheus');
 const appName = require('./package').name;
 const express = require('express');
 const bodyParser = require('body-parser');

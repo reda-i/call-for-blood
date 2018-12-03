@@ -1,8 +1,11 @@
 module.exports = (app, request, ports) => {
     app.post('/endpoints/login', (req, res) => {
+        const host = process.env.NODE_ENV === 'production'
+            ? process.env.AUTH_NAME
+            : req.hostname;
         const options = {
             method: 'POST',
-            uri: `${req.protocol}://${req.hostname}:${ports.auth}${process.env.LOGIN_ENDPOINT}`,
+            uri: `${req.protocol}://${host}:${ports.auth}${process.env.LOGIN_ENDPOINT}`,
             body: req.body,
             json: true
         };
@@ -17,9 +20,12 @@ module.exports = (app, request, ports) => {
     });
 
     app.post('/endpoints/signup', (req, res) => {
+        const host = process.env.NODE_ENV === 'production'
+            ? process.env.AUTH_NAME
+            : req.hostname;
         const options = {
             method: 'POST',
-            uri: `${req.protocol}://${req.hostname}:${ports.auth}${process.env.SIGNUP_ENDPOINT}`,
+            uri: `${req.protocol}://${host}:${ports.auth}${process.env.SIGNUP_ENDPOINT}`,
             body: req.body,
             json: true
         };

@@ -4,7 +4,7 @@
   "description": "A place where blood donors can painlessly help the close hospitals to them in need for blood donations.",
   "main": "index.js",
   "scripts": {
-    "frontend:start": "(cd ./frontend && npm run-script start) & (cd ./frontend && npm run-script start-router) &",
+    "frontend:start": "(cd ./frontend && npm run-script react:start) & (cd ./frontend && npm run-script start) &",
     "auth:start": "cd ./auth && npm run-script start &",
     "calls:start": "cd ./calls && npm run-script start &",
     "start": "npm run frontend:start & npm run auth:start & npm run calls:start",

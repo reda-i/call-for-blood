@@ -1,0 +1,54 @@
+version: '2'
+services:
+  frontend:
+    build: ./frontend
+    image: logician724/cfb-frontend
+    container_name: cfb-frontend
+    environment:
+      - SESSION_SECRET=5a4e0d2c6198976aaff66bc8
+      - MONGO_URL=mongodb://mongodb:27017/call-for-blood
+      - PORT=3100
+      - SERVER_PORT=4000
+      - NODE_ENV=production
+      - SIGNUP_ENDPOINT=/api/auth/create
+      - LOGIN_ENDPOINT=/api/auth/login
+      - CALLS_ENDPOINT=/api/call
+      - AUTH_CFB_PORT=3200
+      - CALLS_PORT=3400
+      - AUTH_NAME=auth
+      - CALLS_NAME=calls
+    ports:
+      - "3100:3100"
+    links:
+      - mongodb
+  auth:
+    build: ./auth
+    image: logician724/cfb-auth
+    container_name: cfb-auth
+    environment:
+      - PORT=3200
+      - MONGO_URL=mongodb://mongodb:27017/call-for-blood
+      - SECRET=5a4e0d2c6198976aaff66bc8
+    ports:
+      - "3200:3200"
+    links:
+      - mongodb
+  calls:
+    build: ./calls
+    image: logician724/cfb-calls
+    container_name: cfb_calls
+    environment:
+      - PORT=3400
+      - SECRET=5a4e0d2c6198976aaff66bc8
+      - MAILER_SERVICE=Gmail
+      - MAILER_USER= callforbloodteam@gmail.com
+      - MAILER_PASSWORD= hello2you
+      - MONGO_URL=mongodb://mongodb:27017/call-for-blood
+    ports:
+      - "3400:3400"
+    links:
+      - mongodb
+  mongodb:
+    image: mongo
+    ports:
+      - "27017:27017"

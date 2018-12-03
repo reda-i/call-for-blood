@@ -1,9 +1,13 @@
 /* eslint-disable dot-notation */
 module.exports = function (app, request, ports) {
     app.post('/endpoints/call/send', (req, res) => {
+        const host = process.env.NODE_ENV === 'production'
+            ? process.env.CALLS_NAME
+            : req.hostname;
+        console.log(`${req.protocol}://${host}:${ports.calls}${process.env.CALLS_ENDPOINT}`);
         const options = {
             method: 'POST',
-            uri: `${req.protocol}://${req.hostname}:${ports.calls}${process.env.CALLS_ENDPOINT}`,
+            uri: `${req.protocol}://${host}:${ports.calls}${process.env.CALLS_ENDPOINT}`,
             body: req.body,
             headers: {
                 'authorization': req.headers['authorization']

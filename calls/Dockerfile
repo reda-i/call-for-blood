@@ -1,7 +1,7 @@
 FROM node:10
 
 ENV NODE_ENV production
-ENV PORT 3000
+ENV PORT 3400
 
 WORKDIR /usr/src/app
 
@@ -11,6 +11,6 @@ RUN npm install
 
 COPY . .
 
-EXPOSE 3100 3200 3400
+EXPOSE 3400
 
 CMD ["npm", "start"]

@@ -1,0 +1,18 @@
+apiVersion: v1
+kind: Service
+metadata:
+  prometheus.io/scrape: 'true'
+  name: {{ include "cfb-auth.fullname" . }}
+  labels:
+    app.kubernetes.io/name: {{ include "cfb-auth.name" . }}
+    helm.sh/chart: {{ include "cfb-auth.chart" . }}
+    app.kubernetes.io/instance: {{ .Release.Name }}
+    app.kubernetes.io/managed-by: {{ .Release.Service }}
+spec:
+  type: {{ .Values.service.type }}
+    ports:
+      - port: {{ .Values.service.servicePort }}
+      - nodePort: {{ .Values.service.serviceNodePort }}
+  selector:
+    app.kubernetes.io/name: {{ include "cfb-auth.name" . }}
+    app.kubernetes.io/instance: {{ .Release.Name }}
