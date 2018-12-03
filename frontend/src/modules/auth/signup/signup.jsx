@@ -21,8 +21,8 @@ class SignUp extends Component {
         const currentState = this.state;
         currentState.location.coordinates =
             [
-                this.props.coords.latitude,
-                this.props.coords.longitude
+                this.props.coords.longitude,
+                this.props.coords.latitude
             ]
         request.post('/endpoints/signup', currentState)
             .then((res) => {
