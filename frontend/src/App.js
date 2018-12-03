@@ -15,7 +15,14 @@ class App extends Component {
     isLoggedIn: false
   };
 
-  componentDidUpdate(prevProps) {
+  componentDidMount = () => {
+    const token = localStorage.getItem('cfb_token');
+    if (token) {
+      this.setState({ isLoggedIn: true });
+    }
+  }
+
+  componentDidUpdate = (prevProps) => {
     if (this.props.location !== prevProps.location) {
       const token = localStorage.getItem('cfb_token');
       if (token) {
@@ -26,6 +33,13 @@ class App extends Component {
     }
   }
 
+  logOut = () => {
+    localStorage.removeItem('cfb_token');
+    localStorage.removeItem('userdata_cfb');
+    this.setState({ isLoggedIn: false });
+    this.props.history.push('/');
+  }
+
   // the other pages are to be added later
   render() {
     return (
@@ -33,7 +47,9 @@ class App extends Component {
         <header className='cfb-color-primary cfb-color-background container-fluid'>
           <div className='row justify-content-between'>
             <div className='pl-3'>
-              <h3>CFB | Call For Blood</h3>
+              <Link to='/' clasName='cfb-color-primary'>
+                <h3>CFB | Call For Blood</h3>
+              </Link>
             </div>
             <div className='col-xs-2 pr-3'>
               <nav className='nav ml-auto'>
@@ -42,7 +58,10 @@ class App extends Component {
                     <Link to='/signin' className='nav-link'>SignIn</Link>
                     <Link to='/signup' className='nav-link'>SignUp</Link>
                   </Aux>
-                  : <Link to='/calls' className='nav-link'>My Calls</Link>
+                  : <Aux>
+                    <Link to='/calls' className='nav-link'>My Calls</Link>
+                    <a className='nav-link' onClick={this.logOut}>Logout</a>
+                  </Aux>
                 }
 
               </nav>

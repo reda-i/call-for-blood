@@ -1,14 +1,15 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import './landing.css';
 const landing = () => (
     <div className='fill-page'>
         <div className='w-100 cfb-color-background cover-padding'>
             <div className='half-page text-center d-flex w-100 p-3 mx-auto flex-column'>
                 <div className='mt-auto mb-auto w-75 align-self-center'>
-                        <h1 className='cover-heading'>Blood Donations Made Easy</h1>
-                    <p className='lead'> Reach out to the hospitals that need you the most with a swipe! The call for blood app connects you with nearby hospitals with critical cases that need immediate transfusions in a blink. </p>
+                        <h1 className='cover-heading text-light'>Blood Donations Made Easy</h1>
+                    <p className='lead cfb-color-primary'> Reach out to the hospitals that need you the most with a swipe! The call for blood app connects you with nearby hospitals with critical cases that need immediate transfusions in a blink. </p>
                     <p className='lead'>
-                        <a href='#' className='btn btn-lg btn-secondary'>Sign Up Now</a>
+                        <Link to='/signup' className='btn btn-lg btn-secondary'>Sign Up Now</Link>
                     </p>
                 </div>
             </div>
@@ -28,7 +29,7 @@ const landing = () => (
             <div className='row justify-content-center pt-5'>
                 <div className='col-xs-12'>
                     <p className='lead'>
-                        <a href='#' className='btn btn-lg btn-secondary'>Join Us Now</a>
+                        <Link to='/signup' className='btn btn-lg btn-secondary'>Join Us Now</Link>
                     </p>
                 </div>
             </div>

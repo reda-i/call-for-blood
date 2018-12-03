@@ -18,6 +18,13 @@ class SignUp extends Component {
         }
     }
 
+    componentDidMount = () => {
+        const token = localStorage.getItem('cfb_token');
+        if (token) {
+            this.props.history.push('/calls');
+        }
+    }
+
     signUpUser = () => {
         const currentState = this.state;
         const { history } = this.props;

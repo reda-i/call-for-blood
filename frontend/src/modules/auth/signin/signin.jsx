@@ -10,6 +10,13 @@ class SignIn extends Component {
         password: ''
     }
 
+    componentDidMount = () => {
+        const token = localStorage.getItem('cfb_token');
+        if (token) {
+            this.props.history.push('/calls');
+        }
+    }
+
     signInUser = () => {
         const currentState = this.state;
         const { history } = this.props;
