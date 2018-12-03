@@ -26,6 +26,10 @@ app.get('/test', (req, res) => {
 
 require('./routes/auth')(app, request, config.ports);
 require('./routes/calls')(app, request, config.ports);
+app.get('/*', (req, res) => {
+    res.sendFile('index.html', { root: `${__dirname}/build` });
+  });
+
 const port = process.env.NODE_ENV === 'production'
     ? process.env.PORT
     : process.env.SERVER_PORT;
