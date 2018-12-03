@@ -3,9 +3,11 @@ import { Route, Switch, Link, withRouter } from 'react-router-dom';
 import { NotificationContainer } from 'react-notifications';
 import SignIn from './modules/auth/signin/signin';
 import SignUp from './modules/auth/signup/signup';
+import Calls from './modules/calls/calls';
 import Landing from './modules/landing/landing';
 import Aux from './modules/shared/auxiliary';
 import request from './modules/shared/request';
+
 import 'react-notifications/lib/notifications.css';
 
 class App extends Component {
@@ -21,7 +23,6 @@ class App extends Component {
         request.defaults.headers.common['authorization'] = token;
         this.setState({ isLoggedIn: true });
       }
-      console.log(this.state.isLoggedIn);
     }
   }
 
@@ -36,7 +37,7 @@ class App extends Component {
             </div>
             <div className='col-xs-2 pr-3'>
               <nav className='nav ml-auto'>
-                {this.state.isLoggedIn
+                {!this.state.isLoggedIn
                   ? <Aux>
                     <Link to='/signin' className='nav-link'>SignIn</Link>
                     <Link to='/signup' className='nav-link'>SignUp</Link>
@@ -53,6 +54,7 @@ class App extends Component {
             <Route path='/' exact component={Landing} />
             <Route path='/signup' component={SignUp} />
             <Route path='/signin' component={SignIn} />
+            <Route path='/calls' component={Calls} />
           </Switch>
         </div>
         <footer className='mastfoot mt-auto'>

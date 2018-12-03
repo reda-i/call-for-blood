@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { geolocated } from 'react-geolocated';
 import request from '../../shared/request';
 import { NotificationManager } from 'react-notifications';
+import { withRouter } from 'react-router-dom';
 
 import './signup.css';
 class SignUp extends Component {
@@ -19,6 +20,7 @@ class SignUp extends Component {
 
     signUpUser = () => {
         const currentState = this.state;
+        const { history } = this.props;
         currentState.location.coordinates =
             [
                 this.props.coords.longitude,
@@ -34,7 +36,9 @@ class SignUp extends Component {
                 // eslint-disable-next-line dot-notation
                 request.defaults.headers.common['authorization'] = res.data.token;
 
-                return NotificationManager.success('You have signed up successfully');
+                NotificationManager.success('You have signed up successfully');
+
+                return history.push('/calls');
             })
             .catch((err) => {
                 if (!err ||
@@ -148,9 +152,9 @@ class SignUp extends Component {
     }
 }
 
-export default geolocated({
+export default withRouter(geolocated({
     positionOptions: {
         enableHighAccuracy: true
     },
     userDecisionTimeout: 10000
-})(SignUp);
+})(SignUp));

@@ -27,7 +27,7 @@ app.get('/test', (req, res) => {
 });
 
 require('./routes/auth')(app, request, config.ports);
-
+require('./routes/calls')(app, request, config.ports);
 const port = process.env.NODE_ENV === 'production'
     ? process.env.PORT
     : process.env.SERVER_PORT;
