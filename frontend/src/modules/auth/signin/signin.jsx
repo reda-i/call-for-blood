@@ -39,8 +39,13 @@ class SignIn extends Component {
                     !err.response ||
                     !err.response.data ||
                     !err.response.data.err) {
+                    if (err.response.status === 401) {
+                        return NotificationManager.error(err.response.data.msg);
+                    }
+
                     return NotificationManager.error('An unknown error occurred, please try again later.');
                 }
+
                 const errors = err.response.data.err;
 
                 return Object.keys(errors).forEach((error) => NotificationManager.error(`${errors[error].param} is invalid`));

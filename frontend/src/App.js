@@ -47,7 +47,7 @@ class App extends Component {
         <header className='cfb-color-primary cfb-color-background container-fluid'>
           <div className='row justify-content-between'>
             <div className='pl-3'>
-              <Link to='/' clasName='cfb-color-primary'>
+              <Link to='/' className='cfb-color-primary'>
                 <h3>CFB | Call For Blood</h3>
               </Link>
             </div>
