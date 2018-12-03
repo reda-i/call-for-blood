@@ -6,7 +6,7 @@ metadata:
     app.kubernetes.io/name: {{ include "call-for-blood.name" . }}
 data:
   mongoUrl: "{{ .Values.config.mongoUrl }}"
-  sessionSecret: "{{ .Values.config.sessionSecret }}"
+  secret: "{{ .Values.config.secret }}"
   nodeEnv: "{{ .Values.config.nodeEnv}}"
   baseURL: "{{ .Values.config.baseURL}}"
   signupEndpoint: "/api/user/create"

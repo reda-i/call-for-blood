@@ -55,7 +55,7 @@ spec:
                   key: mongoUrl
             - name: PORT
               value: "{{ .Values.service.servicePort }}"
-            - name: SESSION_SECRET
+            - name: SECRET
               valueFrom:
                 configMapKeyRef:
                   name: "{{ .Chart.Name }}-configmap"
