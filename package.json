@@ -6,8 +6,9 @@
   "scripts": {
     "frontend:start": "(cd ./frontend && npm run-script start) & (cd ./frontend && npm run-script start-router) &",
     "auth:start": "cd ./auth && npm run-script start &",
-    "start": "npm run frontend:start & npm run auth:start",
-    "install:all": "(cd ./auth && npm install) & (cd ./frontend && npm install) & npm install",
+    "calls:start": "cd ./calls && npm run-script start &",
+    "start": "npm run frontend:start & npm run auth:start & npm run calls:start",
+    "install:all": "(cd ./auth && npm install) & (cd ./frontend && npm install) & (cd ./calls && npm install) & npm install",
     "kill": "kill -9 $(lsof -t -i:3100) & kill -9 $(lsof -t -i:3200) & kill -9 $(lsof -t -i:4000)",
     "test": "echo \"Error: no test specified\" && exit 1"
   },

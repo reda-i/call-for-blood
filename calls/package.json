@@ -1,0 +1,36 @@
+{
+  "name": "cfb-calls",
+  "version": "1.0.0",
+  "description": "Call for blood app api for calls and notification to users",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://gitlab.com/Logician724/call-for-blood.git"
+  },
+  "keywords": [
+    "microservice",
+    "mailing",
+    "notification"
+  ],
+  "author": "Logician724",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://gitlab.com/Logician724/call-for-blood/issues"
+  },
+  "homepage": "https://gitlab.com/Logician724/call-for-blood#readme",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "cors": "^2.8.5",
+    "dotenv": "^6.1.0",
+    "express": "^4.16.4",
+    "express-validator": "^5.3.0",
+    "helmet": "^3.15.0",
+    "jsonwebtoken": "^8.4.0",
+    "log4js": "^3.0.6",
+    "mongoose": "^5.3.14",
+    "nodemailer": "^4.7.0"
+  }
+}
