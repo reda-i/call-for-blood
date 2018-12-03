@@ -99,16 +99,18 @@ app.post(
                         from: 'callforblood-cfb@hotmail.com',
                         subject: call.title,
                         text: `
-                        Hello ${user.username},
-                        This is a notification to inform you that a hospital really need your help.
-                        Here is information about the case that needs your help.
+Hello ${user.username},
+This is a notification to inform you that a hospital really needs your help.
+Here is information about the case that needs your help.
                         
-                        ${call.case}
+${call.case}
                     
-                        Kindly find the location of the hospital in the following link
-                        ${call.link}
-                        Regards,
-                        The CFB Team`,
+Kindly find the location of the hospital in the following link
+
+${call.link}
+
+Regards,
+The CFB Team`,
                         to: user.email
                     });
                 });
